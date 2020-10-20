@@ -1,0 +1,115 @@
+Give.cookies=9999999999
+function clickProduct(i) {
+    if (document.getElementById("product" + i))
+        document.getElementById("product" + i).click();
+}
+
+function clickParticle(i) {
+    if (document.getElementById("particle" + i))
+        document.getElementById("particle" + i).click();
+}
+
+function clickShimmers() {
+    document.getElementsByClassName("shimmer")[0].click();
+}
+
+
+function clickUpgrade(i) {
+    if (document.getElementById("upgrade" + i))
+        document.getElementById("upgrade" + i).click();
+}
+
+function clickUpgrades() {
+    console.clear();
+    for (i = 25; i > -1; i--) {
+        clickUpgrade(i);
+    }
+}
+
+function clickParticles() {
+    console.clear();
+    for (i = 10; i > -1; i--) {
+        clickParticle(i);
+    }
+}
+
+function clickProducts() {
+    console.clear();
+    for (i = 25; i > -1; i--) {
+        clickProduct(i);
+    }
+}
+
+
+function Trade(demo) {
+    var demo = demo || false;
+    for (var i = 0; i < 8; i++) {
+        var val = document.getElementById("bankGood-" + i + "-val");
+        if (val) {
+            var amount = parseInt(val.innerText.split("$").join(""));
+            var have = parseInt(document.getElementById("bankGood-" + i + "-stock").innerText);
+            var max = parseInt(document.getElementById("bankGood-" + i + "-stockMax").innerText.split("/").join(""));
+
+            console.log("i", i, "amount", amount, "have", have, "max", max, "demo", demo);
+
+            if (amount < 10 && have < max) {
+                console.log("Buy 1 " + i);
+                if (!demo) document.getElementById("bankGood-" + i + "_1").click();
+            }
+            if (amount < 5 && have < max) {
+                console.log("Buy All " + i);
+                if (!demo) document.getElementById("bankGood-" + i + "_Max").click();
+            }
+            if (amount > 40 && have > 0) {
+                console.log("Sell 1 " + i);
+                if (!demo) document.getElementById("bankGood-" + i + "_-1").click();
+            }
+            if (amount > 60 && have > 0) {
+                console.log("Sell All " + i);
+                if (!demo) document.getElementById("bankGood-" + i + "_-All").click();
+            }
+        } else console.log("Value " + i + " invalid");
+    }
+}
+
+
+(function () {
+
+    setInterval(function () {
+        clickUpgrades();
+    }, 3000);
+
+    setInterval(function () {
+        clickParticles();
+    }, 5000);
+
+    /* setInterval(function () {
+        // clickMarket();
+    }, 7000); */
+
+    setInterval(function () {
+        clickProducts();
+    }, 10000);
+
+    setInterval(function () {
+        document.getElementById("bigCookie").click();
+    }, 333);
+
+    setInterval(function () {
+        clickShimmers();
+    }, 2000);
+
+    setInterval(function () {
+        Trade();
+    }, 30000);
+
+    setTimeout(function () {
+        clickProducts();
+    }, 1000);
+
+    setTimeout(function () {
+        clickUpgrades();
+        clickParticles();
+        Trade();
+    }, 5000);
+})();

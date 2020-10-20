@@ -1,4 +1,6 @@
 Paste in console in inspect element to run
+DO NOT COPY INSTUCTIONS WITH IT
+@owen_stetler.2008 on tiktok!
 
 Game.Earn(999999999)
 function clickProduct(i) {

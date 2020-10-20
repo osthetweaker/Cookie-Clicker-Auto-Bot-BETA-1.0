@@ -1,6 +1,6 @@
 Paste in console in inspect element to run
 
-Give.cookies=9999999999
+Game.Earn(999999999)
 function clickProduct(i) {
     if (document.getElementById("product" + i))
         document.getElementById("product" + i).click();
